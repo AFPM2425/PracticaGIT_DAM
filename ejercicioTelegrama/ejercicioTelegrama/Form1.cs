@@ -25,7 +25,11 @@ A	partir de ahí, cada palabra adicional tiene un coste de 0,75€.
             //Leo el telegrama  
             textoTelegrama = txtTelegrama.Text;
             // telegrama urgente? 
-            if (chkUrgente.Checked)
+            if (rbtnOrdinario.Checked)
+            {
+                tipoTelegrama = 'o';
+            }
+            else if (rbtnUrgente.Checked)
             {
                 tipoTelegrama = 'u';
             }
