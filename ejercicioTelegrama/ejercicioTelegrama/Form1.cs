@@ -1,5 +1,12 @@
 namespace ejercicioTelegrama
 {
+    /*Se ha desarrollado un módulo que permite calcular el precio de un telegrama en base a los siguientes requisitos: 
+•	Los telegramas pueden ser ordinarios o urgentes. 
+•	El coste de un telegrama ordinario son 2,5 euros, hasta un máximo de 10 palabras. 
+A	partir de ahí, cada palabra adicional tiene un coste de 0,50€. 
+•	El coste de un telegrama urgente son 5 euros, hasta un máximo de 10 palabras. 
+A	partir de ahí, cada palabra adicional tiene un coste de 0,75€. 
+    */
     public partial class Form1 : Form
     {
         public Form1()
@@ -11,7 +18,7 @@ namespace ejercicioTelegrama
         {
             string textoTelegrama;
 
-            char tipoTelegrama = ' ';
+            char tipoTelegrama = 'o';
             int numPalabras = 0;
             double coste;
 
@@ -23,7 +30,7 @@ namespace ejercicioTelegrama
                 tipoTelegrama = 'u';
             }
             //Obtengo el número de palabras que forma el telegrama  
-            numPalabras = textoTelegrama.Length;
+            numPalabras = textoTelegrama.Split(new char[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries).Length;
 
 
 
@@ -36,7 +43,7 @@ namespace ejercicioTelegrama
                 }
                 else
                 {
-                    coste = 0.5 * numPalabras;
+                    coste = 2.5 + ((numPalabras - 10) * 0.5);
                 }
             }
             else
@@ -50,7 +57,7 @@ namespace ejercicioTelegrama
                     }
                     else
                     {
-                        coste = 5 + 0.75 * (numPalabras - 10);
+                        coste = 5 + (0.75 * (numPalabras - 10)); ;
                     }
                 }
                 else
